@@ -16,7 +16,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-      <div class="cursor-dot" :style="dotStyle" />
+      <!-- <div class="cursor-dot" :style="dotStyle" /> -->
       <div class="cursor-ring" :style="ringStyle" />
     </div>
   </q-layout>
