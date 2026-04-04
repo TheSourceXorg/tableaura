@@ -1,8 +1,8 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <div @mousemove="onMouseMove" class="cursor-area">
-      <!-- your page content -->
-      <q-header elevated class="bg-primary text-white">
+
+    <!-- Header -->
+    <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
@@ -13,64 +13,76 @@
       </q-toolbar>
     </q-header>
 
+    <!-- Page Content -->
     <q-page-container>
       <router-view />
     </q-page-container>
-      <!-- <div class="cursor-dot" :style="dotStyle" /> -->
-      <div class="cursor-ring" :style="ringStyle" />
-    </div>
+
+    <!-- Cursor -->
+    <div class="cursor-ring" :style="ringStyle()" />
+
   </q-layout>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
+// current position (rendered)
 const x = ref(0)
 const y = ref(0)
 
-const onMouseMove = (e) => {
-  x.value = e.clientX
-  y.value = e.clientY
+// target (mouse)
+const targetX = ref(0)
+const targetY = ref(0)
+
+// mouse tracking (GLOBAL)
+const handleMouseMove = (e) => {
+  targetX.value = e.clientX
+  targetY.value = e.clientY
 }
 
-// const dotStyle = computed(() => ({
-//   left: x.value + 'px',
-//   top: y.value + 'px',
-// }))
+// animation loop (smooth delay)
+const animate = () => {
+  const speed = 0.1 // 0.05 = slow, 0.1 = balanced, 0.2 = tight
 
-const ringStyle = computed(() => ({
-  left: x.value + 'px',
-  top: y.value + 'px',
-}))
+  x.value += (targetX.value - x.value) * speed
+  y.value += (targetY.value - y.value) * speed
+
+  requestAnimationFrame(animate)
+}
+
+onMounted(() => {
+  window.addEventListener('mousemove', handleMouseMove)
+  animate()
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('mousemove', handleMouseMove)
+})
+
+// exact centering (no percentage guesswork)
+const size = 25
+
+const ringStyle = () => ({
+  transform: `translate3d(${x.value - size / 2}px, ${y.value - size / 2}px, 0)`
+})
 </script>
 
 <style scoped>
-.cursor-area {
-  position: relative;
-  min-height: 100vh;
-}
-
-/* .cursor-dot {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: #000;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.08s ease;
-} */
 
 .cursor-ring {
   position: fixed;
+  top: 0;
+  left: 0;
+
   width: 25px;
   height: 25px;
-  background: rgba(255, 183, 28, 0.651);
+  background: rgba(255, 183, 28, 0.65);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+
   pointer-events: none;
-  z-index: 9998;
-  transition: left 0.09s ease, top 0.09s ease;
+  z-index: 999999;
+
+  will-change: transform;
 }
 </style>
