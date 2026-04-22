@@ -24,7 +24,7 @@
     </div>
 
     <!-- Cards -->
-    <div class="row q-col-gutter-lg q-mt-xl justify-center">
+    <div class="row q-col-gutter-lg q-mt-xl justify-center container">
       <div
         class="col-12 col-sm-6 col-md-3"
         v-for="item in menuItems"
@@ -63,7 +63,8 @@ const menuItems = [
     name: 'Garden Fresh Salad',
     price: 18,
     desc: 'Organic greens with heirloom tomatoes, burrata, and balsamic reduction',
-    image: 'https://images.unsplash.com/photo-1546793665-c74683f339c1'
+    image: 'https://images.unsplash.com/photo-1546793665-c74683f339c1',
+    category:'starter'
   },
   {
     name: 'Seared Scallops',
@@ -134,6 +135,7 @@ const menuItems = [
   background: #141414;
   border-radius: 16px;
   overflow: hidden;
+  height:100%;
   transition: 0.3s;
 }
 
