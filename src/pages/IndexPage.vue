@@ -35,10 +35,10 @@
   background:
     linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.8) 0%,     /* top black */
-      rgba(0, 0, 0, 0.2) 40%,    /* fade */
+      rgba(0, 0, 0, 0.87) 0%,     /* top black */
+      rgba(0, 0, 0, 0.377) 40%,    /* fade */
       rgba(0, 0, 0, 0.0) 50%,    /* transparent middle */
-      rgba(0, 0, 0, 0.3) 65%,    /* start dark again */
+      rgba(0, 0, 0, 0.37) 65%,    /* start dark again */
       rgba(0, 0, 0, 0.9) 100%    /* bottom black */
     ),
     url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0')

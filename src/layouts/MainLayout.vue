@@ -12,7 +12,7 @@
         <!-- Logo -->
         <div class="logo">
           <span class="logo-table">TABLE</span>
-          <span class="logo-aura">AURA</span>
+          <span class="logo-aura text-primary">AURA</span>
         </div>
 
         <q-space />
@@ -25,6 +25,7 @@
             :to="link.path"
             class="nav-link"
             active-class="nav-link--active"
+            exact-active-class="nav-link--active"
           >
             {{ link.name }}
           </router-link>
@@ -103,15 +104,15 @@
           <h6 class="footer-heading">CONTACT</h6>
           <ul class="footer-list contact-list">
             <li>
-              <q-icon name="place" class="contact-icon" />
+              <q-icon name="place" class="text-primary" />
               <span>123 Culinary Street, NY 10001</span>
             </li>
             <li>
-              <q-icon name="phone" class="contact-icon" />
+              <q-icon name="phone" class="text-primary" />
               <span>(555) 123-4567</span>
             </li>
             <li>
-              <q-icon name="mail" class="contact-icon" />
+              <q-icon name="mail" class="text-primary" />
               <span>info@tableaura.com</span>
             </li>
           </ul>

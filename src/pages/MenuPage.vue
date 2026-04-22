@@ -1,10 +1,10 @@
 <template>
-  <q-page class="menu-page">
+  <q-page class="page-spacing">
 
     <!-- Title -->
     <div class="text-center q-mt-xl">
       <h2 class="title">
-        Our <span class="highlight">Menu</span>
+        Our <span class="text-primary">Menu</span>
       </h2>
       <p class="subtitle">
         A carefully curated selection of dishes prepared with the finest ingredients
@@ -37,7 +37,7 @@
           <q-card-section>
             <div class="row justify-between items-center">
               <div class="item-title">{{ item.name }}</div>
-              <div class="price">${{ item.price }}</div>
+              <div class="price text-primary">${{ item.price }}</div>
             </div>
 
             <div class="desc">
@@ -88,21 +88,10 @@ const menuItems = [
 </script>
 
 <style scoped>
-.menu-page {
-  background: #0b0b0b;
-  color: white;
-  min-height: 100vh;
-  padding-bottom: 50px;
-}
-
 /* Title */
 .title {
   font-size: 42px;
   font-weight: bold;
-}
-
-.highlight {
-  color: #ffa726;
 }
 
 .subtitle {
@@ -125,7 +114,7 @@ const menuItems = [
 }
 
 .tab-btn.active {
-  background: #ffa726;
+  background: var(--q-primary);
   color: black;
   box-shadow: 0 0 15px rgba(255, 167, 38, 0.7);
 }
@@ -150,7 +139,6 @@ const menuItems = [
 }
 
 .price {
-  color: #ffa726;
   font-weight: bold;
 }
 
