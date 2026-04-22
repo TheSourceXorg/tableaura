@@ -2,18 +2,18 @@
   <q-layout view="hHh lpR fFf">
 
     <!-- Header -->
-    <q-header elevated class="bg-primary text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          Title
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
 
-    <!-- Page Content -->
+
+  <q-layout view="hHh lpR fFf">
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+
+  </q-layout>
+
+
+    <!-- This is your original code (already added correctly) -->
     <q-page-container>
       <router-view />
     </q-page-container>
